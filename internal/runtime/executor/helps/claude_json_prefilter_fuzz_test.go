@@ -109,6 +109,8 @@ var prefilterSeeds = []string{
 	`{"messages":[{"role":"system","content":"naming a coding session"}`,
 	`{"output_config":{"format":{"schema":{"properties":{"title":{}}}}},"messages":[{"content":"<session>"}]}`,
 	`{"output_` + bs + `u0063onfig":{"format":{"schema":{"properties":{"title":{}}}}},"system":"Return a short title"}`,
+	`{"output_config":{"format":{"schema":{"properties":{"title":{}}}}},"messages":[{"content":"` + bs + `u003csession>"}]}`,
+	`{"output_config":{"effort":"high"},"system":"agent","messages":[{"role":"system","content":"plain"},{"role":"user","content":"hi"}]}`,
 	`{"output_config":{"format":{"schema":{"properties":{"title":{},"x":{}}}}}}`,
 	`{"system":"` + bs + `ud83d` + bs + `ude00 naming a coding session"}`,
 	`{"system":"` + bs + `/naming a coding session` + bs + `"}`,

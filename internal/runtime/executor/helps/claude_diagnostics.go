@@ -736,10 +736,12 @@ func isClaudeTitleHelperInstruction(body []byte) bool {
 }
 
 func isClaudeTitleHelperRequest(body []byte) bool {
-	// Without an output_config key the request is a helper only if one of the
-	// system title instructions below appears, so skip the walks when none can.
-	if !jsonMayContainASCII(body, "output_config", "naming a coding session", "Return a short title",
-		"Write the title in the predominant language") {
+	// Both branches below need one of the title instructions somewhere in the
+	// body (isClaudeTitleHelperInstruction also accepts "<session>"), so skip
+	// the walks when none can appear. Do not key this on output_config: agent
+	// clients send output_config.effort on every turn.
+	if !jsonMayContainASCII(body, "naming a coding session", "Return a short title",
+		"Write the title in the predominant language", "<session>") {
 		return false
 	}
 	props := ojson.GetBytesNoCopy(body, "output_config.format.schema.properties")
